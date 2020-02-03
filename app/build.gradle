@@ -1,0 +1,92 @@
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+apply plugin: "kotlin-kapt"
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+android {
+    signingConfigs {
+        config {
+        }
+    }
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.dokoden.dotlocalfinder"
+        minSdkVersion 14
+        targetSdkVersion 29
+        versionCode 12
+        versionName "1.4.20190625"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.config
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            //shrinkResources true
+            //minifyEnabled true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.config
+        }
+        debug {
+        }
+    }
+    productFlavors {
+    }
+    dataBinding { enabled = true }
+    kotlinOptions { jvmTarget = "1.8" }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+    // Default
+    implementation fileTree(include: ["*.jar"], dir: "libs")
+    testImplementation "junit:junit:4.12"
+    androidTestImplementation "androidx.test:runner:1.2.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "androidx.core:core-ktx:1.1.0"
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    // Material Design and Preferences
+    implementation "com.google.android.material:material:1.0.0"
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation "androidx.preference:preference-ktx:1.1.0"
+    // Layout
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+    implementation "androidx.drawerlayout:drawerlayout:1.0.0"
+    implementation "androidx.gridlayout:gridlayout:1.0.0"
+    implementation "androidx.percentlayout:percentlayout:1.0.0"
+    implementation "androidx.slidingpanelayout:slidingpanelayout:1.0.0"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    // Futures
+    implementation "androidx.concurrent:concurrent-futures:1.0.0"
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    // Room
+    implementation "androidx.room:room-runtime:2.2.3"
+    kapt "androidx.room:room-compiler:2.2.3"
+    testImplementation "androidx.room:room-testing:2.2.3"
+    // Paging
+    implementation "androidx.paging:paging-runtime-ktx:2.1.1"
+    testImplementation "androidx.paging:paging-common-ktx:2.1.1"
+    // WorkManager
+    implementation "androidx.work:work-runtime-ktx:2.3.0"
+    androidTestImplementation "androidx.work:work-testing:2.3.0"
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3"
+    // 3rd Party(mavenCentral)
+    implementation "xyz.gianlu.mdnsjava:mdnsjava:2.2.1"
+    implementation "net.taptappun.taku.kobayashi:runtimepermissionchecker:1.1.1"
+}
