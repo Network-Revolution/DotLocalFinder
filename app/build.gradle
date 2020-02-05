@@ -6,8 +6,6 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     signingConfigs {
-        config {
-        }
     }
     compileSdkVersion 29
     defaultConfig {
@@ -17,7 +15,6 @@ android {
         versionCode 12
         versionName "1.4.20190625"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        signingConfig signingConfigs.config
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
@@ -26,7 +23,6 @@ android {
             //minifyEnabled true
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-            signingConfig signingConfigs.config
         }
         debug {
         }
