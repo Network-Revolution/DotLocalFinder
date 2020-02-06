@@ -1,20 +1,22 @@
 package com.dokoden.dotlocalfinder
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dokoden.dotlocalfinder.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
 
+    @SuppressLint("FragmentLiveDataObserve")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         val binding = MainFragmentBinding.inflate(inflater, container, false)
         val recyclerAdapter = MainRecyclerAdapter()
 
