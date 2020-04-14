@@ -15,9 +15,9 @@ class MainRecyclerAdapter : RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder>
     override fun getItemCount() = dataList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.apply {
-            itemData = dataList[position]
-            executePendingBindings()
+        holder.binding.also {
+            it.itemData = dataList[position]
+            it.executePendingBindings()
         }
     }
 

@@ -16,18 +16,19 @@ class MainFragment : Fragment() {
     @SuppressLint("FragmentLiveDataObserve")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        val mainViewModel =
+            ViewModelProvider.AndroidViewModelFactory(activity!!.application).create(MainViewModel::class.java)
         val binding = MainFragmentBinding.inflate(inflater, container, false)
         val recyclerAdapter = MainRecyclerAdapter()
 
         binding.viewModel = mainViewModel
-        binding.recyclerView.apply {
-            adapter = recyclerAdapter
-            layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.also {
+            it.adapter = recyclerAdapter
+            it.layoutManager = LinearLayoutManager(context)
         }
 
         mainViewModel.liveDataList.observe(this, Observer {
-            it?.let {
+            it?.also {
                 recyclerAdapter.dataList = it
                 recyclerAdapter.notifyDataSetChanged()
             }

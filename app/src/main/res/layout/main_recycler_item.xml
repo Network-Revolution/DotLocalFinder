@@ -10,7 +10,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:foreground="?attr/selectableItemBackground"
             android:padding="8dp">
 
         <com.google.android.material.card.MaterialCardView
@@ -40,13 +39,13 @@
                         android:layout_margin="8dp"/>
 
                 <Button
-                        android:text="Copy IP"
+                        android:text="@string/copy_ip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:onClick="@{(view) -> itemData.onClickButton(view)}"/>
-            </LinearLayout>
 
+            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

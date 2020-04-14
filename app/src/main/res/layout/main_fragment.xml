@@ -24,6 +24,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:srcCompat="@drawable/ic_search_black_24dp"
                 tools:ignore="MissingConstraints"/>
+
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -35,6 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:baselineAligned="false">
+
                 <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -44,9 +46,10 @@
                             android:text="@={viewModel.localName}"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Input local name"
+                            android:hint="@string/hint"
                             android:inputType="textUri"
                             android:imeOptions="actionSearch"/>
+
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner
@@ -55,12 +58,13 @@
                         android:selectedItemPosition="@={viewModel.selectedPosition}"
                         android:entries="@{viewModel.ipVersionList}"/>
 
-
             </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
+
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -21,6 +21,6 @@ class MainActivity : AppCompatActivity() {
         RuntimePermissionChecker.requestAllPermissions(this, requestPermission)
 
         binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
-        navController = Navigation.findNavController(this, R.id.my_nav_host_fragment)
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
     }
 }

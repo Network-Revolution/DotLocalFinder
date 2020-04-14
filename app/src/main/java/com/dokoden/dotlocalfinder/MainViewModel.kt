@@ -14,7 +14,7 @@ import org.xbill.DNS.Type
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val wifi = application.getSystemService(Context.WIFI_SERVICE) as WifiManager
+    private val wifiManager = application.getSystemService(Context.WIFI_SERVICE) as WifiManager
     val liveDataList = MutableLiveData<List<MainDataClass>>()
     val localName = ObservableField("")
     val ipVersionList = listOf("[IPv6]", "IPv6", "IPv4")
@@ -27,9 +27,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 when (resolveIpVersion) {
                     "[IPv6]", "IPv6" -> {
-                        wifi.createMulticastLock("mDnsLock4IPv6").apply {
-                            setReferenceCounted(true)
-                            acquire()
+                        wifiManager.createMulticastLock("mDnsLock4IPv6").also {
+                            it.setReferenceCounted(true)
+                            it.acquire()
                             for (record in Lookup(localName.get(), Type.AAAA, DClass.IN).lookupRecords()) {
                                 if (record.type == Type.AAAA) {
                                     mutableList += MainDataClass(
@@ -39,13 +39,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                                     )
                                 }
                             }
-                            release()
+                            it.release()
                         }
                     }
                     "IPv4" -> {
-                        wifi.createMulticastLock("mDnsLock4IPv4").apply {
-                            setReferenceCounted(true)
-                            acquire()
+                        wifiManager.createMulticastLock("mDnsLock4IPv4").also {
+                            it.setReferenceCounted(true)
+                            it.acquire()
                             for (record in Lookup(localName.get(), Type.A, DClass.IN).lookupRecords()) {
                                 if (record.type == Type.A) {
                                     mutableList += MainDataClass(
@@ -55,7 +55,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                                     )
                                 }
                             }
-                            release()
+                            it.release()
                         }
                     }
                 }
