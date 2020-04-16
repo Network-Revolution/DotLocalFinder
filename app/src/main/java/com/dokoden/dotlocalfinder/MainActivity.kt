@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //パーミッションの許可
         RuntimePermissionChecker.requestAllPermissions(this, requestPermission)
 
         binding = DataBindingUtil.setContentView(this, R.layout.main_activity)

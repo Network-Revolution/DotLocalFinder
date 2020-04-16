@@ -17,7 +17,7 @@ class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val mainViewModel =
-            ViewModelProvider.AndroidViewModelFactory(activity!!.application).create(MainViewModel::class.java)
+            ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(MainViewModel::class.java)
         val binding = MainFragmentBinding.inflate(inflater, container, false)
         val recyclerAdapter = MainRecyclerAdapter()
 
