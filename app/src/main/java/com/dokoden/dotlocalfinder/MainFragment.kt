@@ -1,6 +1,5 @@
 package com.dokoden.dotlocalfinder
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import com.dokoden.dotlocalfinder.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
 
-    @SuppressLint("FragmentLiveDataObserve")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val mainViewModel =
