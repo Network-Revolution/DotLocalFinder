@@ -88,5 +88,4 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3"
     // 3rd Party(mavenCentral)
     implementation "xyz.gianlu.mdnsjava:mdnsjava:2.2.1"
-    implementation "net.taptappun.taku.kobayashi:runtimepermissionchecker:1.1.1"
 }

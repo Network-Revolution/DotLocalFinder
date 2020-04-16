@@ -25,7 +25,7 @@ class MainFragment : Fragment() {
             it.layoutManager = LinearLayoutManager(context)
         }
 
-        mainViewModel.liveDataList.observe(this, Observer {
+        mainViewModel.liveDataList.observe(viewLifecycleOwner, Observer {
             it?.also {
                 recyclerAdapter.dataList = it
                 recyclerAdapter.notifyDataSetChanged()
