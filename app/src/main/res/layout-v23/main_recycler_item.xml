@@ -14,6 +14,7 @@
             android:padding="8dp">
 
         <com.google.android.material.card.MaterialCardView
+                android:theme="@style/Theme.MaterialComponents.Light"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_width="0dp"
@@ -40,7 +41,7 @@
                         android:layout_margin="8dp"/>
 
                 <Button
-                        android:text="Copy IP"
+                        android:text="@string/copy_ip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
