@@ -7,9 +7,7 @@ import android.view.View
 import com.google.android.material.snackbar.Snackbar
 
 data class MainDataClass(val mDnsName: String, val resolveType: String, val ipAddress: String) {
-
     fun onClickButton(view: View) {
-
         val copyAddress = when (resolveType) {
             "[IPv6]" -> "[$ipAddress]"
             else -> ipAddress

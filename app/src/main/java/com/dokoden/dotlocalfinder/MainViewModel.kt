@@ -13,7 +13,6 @@ import org.xbill.DNS.DClass
 import org.xbill.DNS.Type
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
-
     private val wifiManager = application.getSystemService(Context.WIFI_SERVICE) as WifiManager
     val liveDataList = MutableLiveData<List<MainDataClass>>()
     val localName = ObservableField("")
