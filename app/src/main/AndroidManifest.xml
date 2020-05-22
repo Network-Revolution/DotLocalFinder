@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:dist="http://schemas.android.com/apk/distribution"
-          package="com.dokoden.dotlocalfinder">
+<manifest
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:dist="http://schemas.android.com/apk/distribution"
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.dokoden.dotlocalfinder"
+        android:targetSandboxVersion="2"
+        tools:targetApi="o">
 
     <dist:module dist:instant="true"/>
 
@@ -9,12 +13,12 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
 
     <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
+            android:icon="@mipmap/ic_launcher"
             android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
             android:theme="@style/AppTheme"
+            android:supportsRtl="true"
+            android:allowBackup="true"
             android:fullBackupContent="@xml/backup_descriptor">
         <activity
                 android:name=".MainActivity"
