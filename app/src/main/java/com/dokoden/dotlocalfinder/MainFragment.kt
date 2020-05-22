@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dokoden.dotlocalfinder.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val mainViewModel =
             ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(MainViewModel::class.java)
