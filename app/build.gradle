@@ -13,8 +13,8 @@ android {
         applicationId "com.dokoden.dotlocalfinder"
         minSdkVersion 14
         targetSdkVersion 30
-        versionCode 15
-        versionName "1.7.20200522"
+        versionCode 16
+        versionName "1.8.20200612"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
