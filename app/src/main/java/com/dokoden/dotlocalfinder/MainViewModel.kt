@@ -6,6 +6,9 @@ import android.net.wifi.WifiManager
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import net.posick.mdns.Lookup
 import org.xbill.DNS.AAAARecord
 import org.xbill.DNS.ARecord
@@ -22,7 +25,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun onResolve() {
         val resolveIpVersion = ipVersionList[selectedPosition]
         val mutableList = mutableListOf<MainDataClass>()
-        Thread(Runnable {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 when (resolveIpVersion) {
                     "[IPv6]", "IPv6" -> {
@@ -62,6 +65,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-        }).start()
+        }
     }
 }
