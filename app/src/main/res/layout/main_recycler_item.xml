@@ -12,8 +12,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp">
 
-        <com.google.android.material.card.MaterialCardView
-                android:theme="@style/Theme.MaterialComponents.DayNight"
+        <androidx.cardview.widget.CardView
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_width="0dp"
@@ -47,6 +46,6 @@
                         android:onClick="@{(view) -> itemData.onClickButton(view)}"/>
 
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
