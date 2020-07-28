@@ -6,7 +6,7 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.0"
+    buildToolsVersion "30.0.1"
     ndkVersion "21.3.6528147"
     
     defaultConfig {
@@ -18,24 +18,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+    buildFeatures {
+        dataBinding true
+        // viewBinding true
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
-        debug {
-            debuggable true
-        }
     }
-    dataBinding { enabled = true }
 
-// To inline the bytecode built with JVM target 1.8 into
-// bytecode that is being built with JVM target 1.6. (e.g. navArgs)
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
     kotlinOptions { jvmTarget = "1.8" }
 }
 
@@ -43,7 +38,7 @@ repositories { mavenCentral() }
 
 dependencies {
     // Local File
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ["*.jar"], dir: "libs")
     // Test
     androidTestImplementation "androidx.test:core-ktx:1.2.0"
     androidTestImplementation "androidx.test:runner:1.2.0"
@@ -52,8 +47,8 @@ dependencies {
     // Instant API
     implementation "com.google.android.gms:play-services-instantapps:17.0.0"
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation "androidx.core:core-ktx:1.3.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:1.3.1"
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
@@ -64,16 +59,18 @@ dependencies {
     // Layout
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
-    implementation "androidx.drawerlayout:drawerlayout:1.0.0"
+    implementation "androidx.drawerlayout:drawerlayout:1.1.0"
     implementation "androidx.gridlayout:gridlayout:1.0.0"
     implementation "androidx.percentlayout:percentlayout:1.0.0"
-    implementation "androidx.slidingpanelayout:slidingpanelayout:1.0.0"
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    implementation "androidx.slidingpanelayout:slidingpanelayout:1.1.0"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     // Futures
     implementation "androidx.concurrent:concurrent-futures:1.0.0"
     // ViewModel and LiveData
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-service:2.2.0"
     testImplementation "androidx.arch.core:core-testing:2.1.0"
     // Room
     implementation "androidx.room:room-runtime:2.2.5"
@@ -83,11 +80,12 @@ dependencies {
     implementation "androidx.paging:paging-runtime-ktx:2.1.2"
     testImplementation "androidx.paging:paging-common-ktx:2.1.2"
     // WorkManager
-    implementation "androidx.work:work-runtime-ktx:2.3.4"
-    androidTestImplementation "androidx.work:work-testing:2.3.4"
+    implementation "androidx.work:work-runtime-ktx:2.4.0"
+    androidTestImplementation "androidx.work:work-testing:2.4.0"
     // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.8"
     // 3rd Party(mavenCentral)
     implementation "xyz.gianlu.mdnsjava:mdnsjava:2.2.1"
 }
