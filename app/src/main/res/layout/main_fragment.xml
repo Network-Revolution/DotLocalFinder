@@ -5,6 +5,7 @@
 
     <data>
         <variable name="viewModel" type="com.dokoden.dotlocalfinder.MainViewModel"/>
+        <variable name="itemAdapter" type="com.dokoden.dotlocalfinder.MainRecyclerAdapter"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,9 +62,10 @@
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                    android:adapter="@{itemAdapter}"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

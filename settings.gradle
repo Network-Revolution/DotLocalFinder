@@ -1,2 +1,2 @@
-rootProject.name = "DotLocalFinder"
 include ":app"
+rootProject.name = "DotLocalFinder"
