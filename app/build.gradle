@@ -18,15 +18,15 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
-    id "kotlin-android-extensions"
     id "kotlin-kapt"
+    id "kotlin-parcelize"
     id "kotlinx-serialization"
     id "androidx.navigation.safeargs.kotlin"
 }
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.dokoden.dotlocalfinder"
@@ -106,11 +106,11 @@ dependencies {
     implementation "androidx.work:work-runtime-ktx:2.4.0"
     androidTestImplementation "androidx.work:work-testing:2.4.0"
     // kotlinx.coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.9"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2"
     // kotlinx.serialization
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.1"
     // 3rd Party(mavenCentral)
     implementation "xyz.gianlu.mdnsjava:mdnsjava:2.2.1"
     //implementation "dnsjava:dnsjava:3.2.2"
