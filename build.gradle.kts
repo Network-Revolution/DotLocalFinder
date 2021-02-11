@@ -17,17 +17,17 @@
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.21"
-    ext.nav_version = "2.3.3"
+    val kotlinVersion by extra("1.4.30")
+    val navVersion by extra("2.3.3")
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+        classpath("com.android.tools.build:gradle:4.0.2")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion")
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -40,6 +40,6 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+task("clean") {
+    delete(rootProject.buildDir)
 }

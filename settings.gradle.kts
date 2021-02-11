@@ -15,5 +15,5 @@
  *
  */
 
-include ":app"
+include(":app")
 rootProject.name = "DotLocalFinder"
