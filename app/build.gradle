@@ -16,12 +16,12 @@
  */
 
 plugins {
-    id "com.android.application"
-    id "kotlin-android"
-    id "kotlin-kapt"
-    id "kotlin-parcelize"
-    id "kotlinx-serialization"
-    id "androidx.navigation.safeargs.kotlin"
+    id("com.android.application")
+    id("kotlin-android")
+    id("kotlin-kapt")
+    id("kotlin-parcelize")
+    id("kotlinx-serialization")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -45,7 +45,7 @@ android {
         release {
             minifyEnabled = true
             shrinkResources = true
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), file("proguard-rules.pro"))
         }
     }
     compileOptions {
@@ -63,55 +63,56 @@ repositories { mavenCentral() }
 dependencies {
     // Local File
     implementation fileTree(include: ["*.jar"], dir: "libs")
+//    implementation(fileTree(mapOf("dir" to "libs", "include" to arrayOf("*.jar"))))
     // Test
-    testImplementation 'junit:junit:4.13.1'
-    androidTestImplementation "androidx.test.espresso:espresso-core:3.3.0"
-    androidTestImplementation "androidx.test.ext:junit-ktx:1.1.2"
+    testImplementation("junit:junit:4.13.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.2")
     // Instant API
-    //implementation "com.google.android.gms:play-services-instantapps:17.0.0"
+    //implementation("com.google.android.gms:play-services-instantapps:17.0.0")
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-    implementation "androidx.core:core-ktx:1.3.2"
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
+    implementation("androidx.core:core-ktx:1.3.2")
     // Navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
     // Material Design and Preferences
-    implementation "com.google.android.material:material:1.3.0"
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
-    implementation "androidx.preference:preference-ktx:1.1.1"
+    implementation("com.google.android.material:material:1.3.0")
+    implementation("androidx.recyclerview:recyclerview:1.1.0")
+    implementation("androidx.preference:preference-ktx:1.1.1")
     // Layout
-    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
-    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
-    implementation "androidx.drawerlayout:drawerlayout:1.1.1"
-    implementation "androidx.gridlayout:gridlayout:1.0.0"
-    implementation "androidx.percentlayout:percentlayout:1.0.0"
-    implementation "androidx.slidingpanelayout:slidingpanelayout:1.1.0"
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.1.0")
+    implementation("androidx.drawerlayout:drawerlayout:1.1.1")
+    implementation("androidx.gridlayout:gridlayout:1.0.0")
+    implementation("androidx.percentlayout:percentlayout:1.0.0")
+    implementation("androidx.slidingpanelayout:slidingpanelayout:1.1.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     // Futures
-    implementation "androidx.concurrent:concurrent-futures:1.1.0"
+    implementation("androidx.concurrent:concurrent-futures:1.1.0")
     // ViewModel and LiveData
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0"
-    implementation "androidx.lifecycle:lifecycle-service:2.3.0"
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0")
+    implementation("androidx.lifecycle:lifecycle-service:2.3.0")
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
     // Room
-    implementation "androidx.room:room-runtime:2.2.6"
-    kapt "androidx.room:room-compiler:2.2.6"
-    testImplementation "androidx.room:room-testing:2.2.6"
+    implementation("androidx.room:room-runtime:2.2.6")
+    kapt("androidx.room:room-compiler:2.2.6")
+    testImplementation("androidx.room:room-testing:2.2.6")
     // Paging
-    implementation "androidx.paging:paging-runtime-ktx:2.1.2"
-    testImplementation "androidx.paging:paging-common-ktx:2.1.2"
+    implementation("androidx.paging:paging-runtime-ktx:2.1.2")
+    testImplementation("androidx.paging:paging-common-ktx:2.1.2")
     // WorkManager
-    implementation "androidx.work:work-runtime-ktx:2.5.0"
-    androidTestImplementation "androidx.work:work-testing:2.5.0"
+    implementation("androidx.work:work-runtime-ktx:2.5.0")
+    androidTestImplementation("androidx.work:work-testing:2.5.0")
     // kotlinx.coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2")
     // kotlinx.serialization
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.1"
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.1")
     // 3rd Party(mavenCentral)
-    implementation "xyz.gianlu.mdnsjava:mdnsjava:2.2.1"
-    //implementation "dnsjava:dnsjava:3.2.2"
+    implementation("xyz.gianlu.mdnsjava:mdnsjava:2.2.1")
+    //implementation("dnsjava:dnsjava:3.2.2")
 }
