@@ -62,7 +62,7 @@ repositories { mavenCentral() }
 
 dependencies {
     // Local File
-    implementation fileTree(include: ["*.jar"], dir: "libs")
+    implementation(fileTree(include: ["*.jar"], dir: "libs"))
 //    implementation(fileTree(mapOf("dir" to "libs", "include" to arrayOf("*.jar"))))
     // Test
     testImplementation("junit:junit:4.13.1")
