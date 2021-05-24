@@ -26,16 +26,16 @@ import androidx.fragment.app.viewModels
 import com.dokoden.dotlocalfinder.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val mainViewModel by viewModels<MainViewModel>()
         val recyclerAdapter = MainRecyclerAdapter()
 
-        mainViewModel.liveDataList.observe(viewLifecycleOwner, {
+        mainViewModel.liveDataList.observe(viewLifecycleOwner) {
             it?.also {
                 recyclerAdapter.dataList = it
                 recyclerAdapter.notifyDataSetChanged()
             }
-        })
+        }
 
         MainFragmentBinding.inflate(inflater, container, false).also {
             it.viewModel = mainViewModel
