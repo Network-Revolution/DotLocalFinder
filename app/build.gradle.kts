@@ -78,7 +78,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     // Core
     implementation("androidx.core:core-ktx:1.5.0")
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.appcompat:appcompat:1.3.0")
 //    implementation("com.google.android.gms:play-services-instantapps:17.0.0")
     // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
