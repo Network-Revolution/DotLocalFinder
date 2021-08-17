@@ -49,13 +49,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                         wifiManager?.createMulticastLock("mDnsLock4IPv6")?.also {
                             it.setReferenceCounted(true)
                             it.acquire()
-                            for (record in Lookup(localName.get(), Type.AAAA, DClass.IN).lookupRecords()) {
-                                if (record.type == Type.AAAA) {
-                                    mutableList += MainDataClass(
-                                        localName.get()!!,
-                                        resolveIpVersion,
-                                        (record as AAAARecord).address.hostAddress
-                                    )
+                            localName.get()?.let { name ->
+                                for (record in Lookup(name, Type.AAAA, DClass.IN).lookupRecords()) {
+                                    if (record.type == Type.AAAA) {
+                                        (record as AAAARecord).address.hostAddress?.let { address ->
+                                            mutableList += MainDataClass(name, resolveIpVersion, address)
+                                        }
+                                    }
                                 }
                             }
                             it.release()
@@ -65,13 +65,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                         wifiManager?.createMulticastLock("mDnsLock4IPv4")?.also {
                             it.setReferenceCounted(true)
                             it.acquire()
-                            for (record in Lookup(localName.get(), Type.A, DClass.IN).lookupRecords()) {
-                                if (record.type == Type.A) {
-                                    mutableList += MainDataClass(
-                                        localName.get()!!,
-                                        resolveIpVersion,
-                                        (record as ARecord).address.hostAddress
-                                    )
+                            localName.get()?.let { name ->
+                                for (record in Lookup(name, Type.A, DClass.IN).lookupRecords()) {
+                                    if (record.type == Type.A) {
+                                        (record as ARecord).address.hostAddress?.let { address ->
+                                            mutableList += MainDataClass(name, resolveIpVersion, address)
+                                        }
+                                    }
                                 }
                             }
                             it.release()

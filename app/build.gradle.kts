@@ -24,15 +24,16 @@ plugins {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
     buildToolsVersion = "30.0.3"
-    ndkVersion = "22.1.7171670"
+    ndkVersion = "23.0.7599858"
 
     defaultConfig {
         applicationId = "com.dokoden.dotlocalfinder"
         minSdk = 14
         targetSdk = 29
         versionCode = 17
+        multiDexEnabled = true
         versionName = "1.9.20210703"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -78,7 +79,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     // Core
     implementation("androidx.core:core-ktx:1.6.0")
-    implementation("androidx.appcompat:appcompat:1.3.0")
+    implementation("androidx.appcompat:appcompat:1.3.1")
 //    implementation("com.google.android.gms:play-services-instantapps:17.0.0")
     // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
@@ -89,7 +90,7 @@ dependencies {
     implementation("androidx.preference:preference-ktx:1.1.1")
 //    implementation("androidx.security:security-crypto:1.0.0")
     // Layout
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
     implementation("androidx.coordinatorlayout:coordinatorlayout:1.1.0")
     implementation("androidx.drawerlayout:drawerlayout:1.1.1")
     implementation("androidx.gridlayout:gridlayout:1.0.0")
@@ -109,17 +110,17 @@ dependencies {
     kapt("androidx.room:room-compiler:2.3.0")
     testImplementation("androidx.room:room-testing:2.3.0")
     // Paging
-    implementation("androidx.paging:paging-runtime-ktx:3.0.0")
-    testImplementation("androidx.paging:paging-common-ktx:3.0.0")
+    implementation("androidx.paging:paging-runtime-ktx:3.0.1")
+    testImplementation("androidx.paging:paging-common-ktx:3.0.1")
     // WorkManager
     implementation("androidx.work:work-runtime-ktx:2.5.0")
     androidTestImplementation("androidx.work:work-testing:2.5.0")
     // kotlinx.coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1")
     // kotlinx.serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.2.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
     // 3rd Party(mavenCentral)
     implementation("xyz.gianlu.mdnsjava:mdnsjava:2.2.1")
 //    implementation("dnsjava:dnsjava:3.2.2")

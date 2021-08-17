@@ -19,10 +19,7 @@
 <manifest
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:dist="http://schemas.android.com/apk/distribution"
-        xmlns:tools="http://schemas.android.com/tools"
-        package="com.dokoden.dotlocalfinder"
-        android:targetSandboxVersion="2"
-        tools:targetApi="o">
+        package="com.dokoden.dotlocalfinder">
 
     <dist:module dist:instant="true"/>
 
@@ -37,7 +34,9 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.DotLocalFinder"
             android:fullBackupContent="@xml/backup_descriptor">
-        <activity android:name=".MainActivity">
+        <activity
+                android:name=".MainActivity"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
