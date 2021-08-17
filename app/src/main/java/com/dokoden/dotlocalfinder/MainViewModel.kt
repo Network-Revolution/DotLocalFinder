@@ -49,10 +49,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                         wifiManager?.createMulticastLock("mDnsLock4IPv6")?.also {
                             it.setReferenceCounted(true)
                             it.acquire()
-                            localName.get()?.let { name ->
+                            localName.get()?.also { name ->
                                 for (record in Lookup(name, Type.AAAA, DClass.IN).lookupRecords()) {
                                     if (record.type == Type.AAAA) {
-                                        (record as AAAARecord).address.hostAddress?.let { address ->
+                                        (record as AAAARecord).address.hostAddress?.also { address ->
                                             mutableList += MainDataClass(name, resolveIpVersion, address)
                                         }
                                     }
@@ -65,10 +65,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                         wifiManager?.createMulticastLock("mDnsLock4IPv4")?.also {
                             it.setReferenceCounted(true)
                             it.acquire()
-                            localName.get()?.let { name ->
+                            localName.get()?.also { name ->
                                 for (record in Lookup(name, Type.A, DClass.IN).lookupRecords()) {
                                     if (record.type == Type.A) {
-                                        (record as ARecord).address.hostAddress?.let { address ->
+                                        (record as ARecord).address.hostAddress?.also { address ->
                                             mutableList += MainDataClass(name, resolveIpVersion, address)
                                         }
                                     }
