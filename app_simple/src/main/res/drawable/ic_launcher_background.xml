@@ -1,0 +1,35 @@
+<!--
+  ~    Copyright 2020- Network Revolution Inc.
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  ~
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="108dp"
+        android:height="108dp"
+        android:viewportWidth="108"
+        android:viewportHeight="108">
+
+    <path android:pathData="M0,0h108v108h-108z"
+          android:fillColor="@color/purple_700"
+          android:strokeColor="@android:color/transparent"/>
+
+    <path android:pathData="M60.847,35.656L47.153,35.656C46.518,35.656 46,36.181 46,36.828l0,8.965c0,0.647 0.518,1.172 1.153,1.172L53.38,46.965L53.38,48.782L50.552,48.782c-0.336,0 -0.609,0.273 -0.609,0.609 0,0.336 0.273,0.609 0.609,0.609l6.896,0c0.336,0 0.609,-0.273 0.609,-0.609 0,-0.336 -0.273,-0.609 -0.609,-0.609L54.62,48.782L54.62,46.965l6.227,0c0.635,0 1.153,-0.526 1.153,-1.172L62,36.828C62,36.181 61.482,35.656 60.847,35.656ZM60.759,45.724L47.241,45.724L47.241,36.896l13.518,0z"
+          android:fillColor="@color/black"/>
+
+    <path android:pathData="M75.311,59.994L72.511,59.994L71.518,59.037c3.474,-4.041 5.565,-9.288 5.565,-14.995 0,-12.726 -10.316,-23.042 -23.042,-23.042 -12.726,0 -23.042,10.316 -23.042,23.042 0,12.726 10.316,23.042 23.042,23.042 5.707,0 10.954,-2.091 14.995,-5.565l0.957,0.993l0,2.8l17.724,17.689 5.282,-5.282zM54.042,59.994c-8.827,0 -15.952,-7.125 -15.952,-15.952 0,-8.827 7.125,-15.952 15.952,-15.952 8.827,0 15.952,7.125 15.952,15.952 0,8.827 -7.125,15.952 -15.952,15.952z"
+          android:fillColor="@color/white"
+          android:strokeColor="@android:color/transparent"/>
+
+</vector>

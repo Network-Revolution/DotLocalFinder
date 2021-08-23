@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~    Copyright 2020- Network Revolution Inc.
   ~
@@ -15,9 +16,6 @@
   ~
   -->
 
-<resources>
-    <string name="app_name">.local Finder</string>
-    <string name="action_settings">Settings</string>
-    <string name="hint">Input local name</string>
-    <string name="action">Action</string>
-</resources>
+<full-backup-content>
+    <!-- Exclude specific shared preferences that contain GCM registration Id -->
+</full-backup-content>

@@ -22,7 +22,6 @@
 
     <data>
         <variable name="itemData" type="com.dokoden.dotlocalfinder.MainDataClass"/>
-        <variable name="itemClickListener" type="com.dokoden.dotlocalfinder.MainRecyclerAdapter.OnCardClickListener"/>
     </data>
 
     <androidx.cardview.widget.CardView
@@ -52,11 +51,11 @@
                     android:layout_margin="8dp"/>
 
             <Button
-                    android:text="@string/action"
+                    android:text="@string/copy_ip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:onClick="@{() -> itemClickListener.onCardClicked(itemData)}"/>
+                    android:onClick="@{(view) -> itemData.onClickButton(view)}"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

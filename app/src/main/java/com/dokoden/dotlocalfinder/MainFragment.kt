@@ -17,6 +17,11 @@
 
 package com.dokoden.dotlocalfinder
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,12 +29,41 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.dokoden.dotlocalfinder.databinding.MainFragmentBinding
+import com.google.android.material.snackbar.Snackbar
+import org.xbill.DNS.Type
 
 class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val mainViewModel by viewModels<MainViewModel>()
-        val recyclerAdapter = MainRecyclerAdapter()
-
+        val recyclerAdapter = MainRecyclerAdapter(object : MainRecyclerAdapter.OnCardClickListener {
+            override fun onCardClicked(mainDataClass: MainDataClass) {
+                val copyAddress = when (mainDataClass.resolveType) {
+                    Type.AAAA -> "[${mainDataClass.ipAddress}]"
+                    else -> mainDataClass.ipAddress
+                }
+                val action = mainViewModel.actionList[mainViewModel.selectedPosition]
+                when (action) {
+                    "Clipboard" -> {
+                        val clipboard = context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                        clipboard.setPrimaryClip(ClipData.newPlainText("mDNS", copyAddress))
+                        // clipboard.primaryClip = ClipData.newPlainText("mDNS", mainDataClass.ipAddress))
+                        Snackbar.make(view!!, "Copied the IP address : $copyAddress", Snackbar.LENGTH_SHORT).show()
+                    }
+                    "HTTP" -> {
+                        val uri = Uri.parse("http://${copyAddress}/")
+                        Intent(Intent.ACTION_VIEW, uri).also {
+                            startActivity(it)
+                        }
+                    }
+                    "HTTPS" -> {
+                        val uri = Uri.parse("https://${copyAddress}/")
+                        Intent(Intent.ACTION_VIEW, uri).also {
+                            startActivity(it)
+                        }
+                    }
+                }
+            }
+        })
         mainViewModel.liveDataList.observe(viewLifecycleOwner) {
             it?.also {
                 recyclerAdapter.dataList = it

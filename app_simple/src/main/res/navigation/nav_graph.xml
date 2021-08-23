@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~    Copyright 2020- Network Revolution Inc.
   ~
@@ -15,9 +16,15 @@
   ~
   -->
 
-<resources>
-    <string name="app_name">.local Finder</string>
-    <string name="action_settings">Settings</string>
-    <string name="hint">Input local name</string>
-    <string name="action">Action</string>
-</resources>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/mainFragment">
+
+    <fragment android:id="@+id/mainFragment"
+              android:name="com.dokoden.dotlocalfinder.MainFragment"
+              android:label="main_fragment"
+              tools:layout="@layout/main_fragment"/>
+
+</navigation>

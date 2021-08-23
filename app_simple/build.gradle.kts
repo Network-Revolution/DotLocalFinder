@@ -32,9 +32,9 @@ android {
         applicationId = "com.dokoden.dotlocalfinder"
         minSdk = 14
         targetSdk = 29
-        versionCode = 20
+        versionCode = 19
         multiDexEnabled = true
-        versionName = "2.0.20210823"
+        versionName = "1.9.20210817"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         javaCompileOptions {

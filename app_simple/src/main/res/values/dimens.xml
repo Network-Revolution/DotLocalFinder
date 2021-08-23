@@ -16,8 +16,5 @@
   -->
 
 <resources>
-    <string name="app_name">.local Finder</string>
-    <string name="action_settings">Settings</string>
-    <string name="hint">Input local name</string>
-    <string name="action">Action</string>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

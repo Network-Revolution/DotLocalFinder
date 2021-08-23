@@ -22,14 +22,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dokoden.dotlocalfinder.databinding.MainRecyclerItemBinding
 
-class MainRecyclerAdapter(
-    private val listener: OnCardClickListener
-) : RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder>() {
+class MainRecyclerAdapter : RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder>() {
     var dataList = emptyList<MainDataClass>()
-
-    interface OnCardClickListener {
-        fun onCardClicked(mainDataClass: MainDataClass)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         MainRecyclerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -40,7 +34,6 @@ class MainRecyclerAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.also {
             it.itemData = dataList[position]
-            it.itemClickListener = listener
             it.executePendingBindings()
         }
     }

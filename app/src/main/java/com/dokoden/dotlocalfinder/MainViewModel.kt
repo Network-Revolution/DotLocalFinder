@@ -27,54 +27,42 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import net.posick.mdns.Lookup
-import org.xbill.DNS.AAAARecord
-import org.xbill.DNS.ARecord
-import org.xbill.DNS.DClass
-import org.xbill.DNS.Type
+import org.xbill.DNS.*
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val wifiManager = application.getSystemService(Context.WIFI_SERVICE) as WifiManager?
     val liveDataList = MutableLiveData<List<MainDataClass>>()
     val localName = ObservableField("")
-    val ipVersionList = listOf("[IPv6]", "IPv6", "IPv4")
+    val actionList = listOf("Clipboard", "HTTP", "HTTPS")
     var selectedPosition = 0
 
     fun onResolve() {
-        val resolveIpVersion = ipVersionList[selectedPosition]
         val mutableList = mutableListOf<MainDataClass>()
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                when (resolveIpVersion) {
-                    "[IPv6]", "IPv6" -> {
-                        wifiManager?.createMulticastLock("mDnsLock4IPv6")?.also {
-                            it.setReferenceCounted(true)
-                            it.acquire()
-                            localName.get()?.also { name ->
-                                for (record in Lookup(name, Type.AAAA, DClass.IN).lookupRecords()) {
-                                    if (record.type == Type.AAAA) {
-                                        (record as AAAARecord).address.hostAddress?.also { address ->
-                                            mutableList += MainDataClass(name, resolveIpVersion, address)
-                                        }
-                                    }
-                                }
-                            }
-                            it.release()
+                val lookupRecords = arrayListOf<Record>()
+                wifiManager?.createMulticastLock("mDnsLock")?.also {
+                    it.setReferenceCounted(true)
+                    it.acquire()
+                    localName.get()?.also { name ->
+                        for (i in 1..10) {
+                            lookupRecords += Lookup(name, Type.AAAA, DClass.IN).lookupRecords()
+                            lookupRecords += Lookup(name, Type.A, DClass.IN).lookupRecords()
                         }
                     }
-                    "IPv4" -> {
-                        wifiManager?.createMulticastLock("mDnsLock4IPv4")?.also {
-                            it.setReferenceCounted(true)
-                            it.acquire()
-                            localName.get()?.also { name ->
-                                for (record in Lookup(name, Type.A, DClass.IN).lookupRecords()) {
-                                    if (record.type == Type.A) {
-                                        (record as ARecord).address.hostAddress?.also { address ->
-                                            mutableList += MainDataClass(name, resolveIpVersion, address)
-                                        }
-                                    }
-                                }
+                    it.release()
+                }
+                for (record in lookupRecords) {
+                    when (record.type) {
+                        Type.AAAA -> {
+                            (record as AAAARecord).address.hostAddress?.also { address ->
+                                mutableList += MainDataClass(record.name.toString(), Type.AAAA, address)
                             }
-                            it.release()
+                        }
+                        Type.A -> {
+                            (record as ARecord).address.hostAddress?.also { address ->
+                                mutableList += MainDataClass(record.name.toString(), Type.A, address)
+                            }
                         }
                     }
                 }
@@ -83,5 +71,5 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 e.printStackTrace()
             }
         }
-    }
+     }
 }
