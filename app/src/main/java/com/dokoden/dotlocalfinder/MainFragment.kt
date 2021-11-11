@@ -33,7 +33,11 @@ import com.google.android.material.snackbar.Snackbar
 import org.xbill.DNS.Type
 
 class MainFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         val mainViewModel by viewModels<MainViewModel>()
         val recyclerAdapter = MainRecyclerAdapter(object : MainRecyclerAdapter.OnCardClickListener {
             override fun onCardClicked(mainDataClass: MainDataClass) {
@@ -41,13 +45,17 @@ class MainFragment : Fragment() {
                     Type.AAAA -> "[${mainDataClass.ipAddress}]"
                     else -> mainDataClass.ipAddress
                 }
-                val action = mainViewModel.actionList[mainViewModel.selectedPosition]
-                when (action) {
+                when (mainViewModel.actionList[mainViewModel.selectedPosition]) {
                     "Clipboard" -> {
-                        val clipboard = context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                        val clipboard =
+                            context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                         clipboard.setPrimaryClip(ClipData.newPlainText("mDNS", copyAddress))
                         // clipboard.primaryClip = ClipData.newPlainText("mDNS", mainDataClass.ipAddress))
-                        Snackbar.make(view!!, "Copied the IP address : $copyAddress", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(
+                            view!!,
+                            "Copied the IP address : $copyAddress",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
                     }
                     "HTTP" -> {
                         val uri = Uri.parse("http://${copyAddress}/")
