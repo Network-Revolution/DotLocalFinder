@@ -71,5 +71,5 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 e.printStackTrace()
             }
         }
-     }
+    }
 }

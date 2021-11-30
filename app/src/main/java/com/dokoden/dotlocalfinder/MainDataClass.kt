@@ -21,4 +21,4 @@ data class MainDataClass(
     val mDnsName: String,
     val resolveType: Int,
     val ipAddress: String
-    )
+)
