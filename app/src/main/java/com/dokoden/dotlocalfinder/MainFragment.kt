@@ -57,12 +57,14 @@ class MainFragment : Fragment() {
                             Snackbar.LENGTH_SHORT
                         ).show()
                     }
+
                     "HTTP" -> {
                         val uri = Uri.parse("http://${copyAddress}/")
                         Intent(Intent.ACTION_VIEW, uri).also {
                             startActivity(it)
                         }
                     }
+
                     "HTTPS" -> {
                         val uri = Uri.parse("https://${copyAddress}/")
                         Intent(Intent.ACTION_VIEW, uri).also {
